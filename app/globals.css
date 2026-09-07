@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --wind-bg: 249 250 252;
+  --wind-surface: 255 255 255;
+  --wind-surface-2: 243 244 248;
+  --wind-border: 226 230 238;
+  --wind-text: 15 23 42;
+  --wind-muted: 100 116 139;
+  --wind-accent: 79 70 229;
+  --wind-accent-hover: 67 56 202;
+  --wind-accent-soft: 238 242 255;
+  --wind-danger: 239 68 68;
+
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+.dark {
+  --wind-bg: 11 13 19;
+  --wind-surface: 18 21 31;
+  --wind-surface-2: 27 31 46;
+  --wind-border: 37 43 62;
+  --wind-text: 241 245 249;
+  --wind-muted: 148 163 184;
+  --wind-accent: 99 102 241;
+  --wind-accent-hover: 129 140 248;
+  --wind-accent-soft: 30 35 58;
+  --wind-danger: 248 113 113;
+}
+
+* {
+  border-color: rgb(var(--wind-border));
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: rgb(var(--wind-bg));
+  color: rgb(var(--wind-text));
+  font-family: var(--font-sans);
+  letter-spacing: -0.011em;
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgb(var(--wind-surface) / 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgb(var(--wind-border) / 0.8);
+}
+
+.dark .glass-panel {
+  background: rgb(var(--wind-surface) / 0.75);
+}
+
+/* Ambient glow */
+.glow-accent {
+  box-shadow: 0 0 25px -5px rgb(var(--wind-accent) / 0.25);
+}
+
+.glow-subtle {
+  box-shadow: 0 4px 20px -2px rgb(0 0 0 / 0.05);
+}
+
+/* Premium Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--wind-border));
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--wind-muted) / 0.5);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Markdown prose */
+.wind-prose {
+  line-height: 1.75;
+  font-size: 0.94rem;
+}
+.wind-prose p {
+  margin: 0.7em 0;
+}
+.wind-prose p:first-child {
+  margin-top: 0;
+}
+.wind-prose p:last-child {
+  margin-bottom: 0;
+}
+.wind-prose ul,
+.wind-prose ol {
+  margin: 0.7em 0;
+  padding-left: 1.5em;
+}
+.wind-prose li {
+  margin: 0.3em 0;
+}
+.wind-prose h1,
+.wind-prose h2,
+.wind-prose h3 {
+  font-weight: 700;
+  color: rgb(var(--wind-text));
+  margin: 1.2em 0 0.45em;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+.wind-prose h1 { font-size: 1.45em; }
+.wind-prose h2 { font-size: 1.25em; }
+.wind-prose h3 { font-size: 1.1em; }
+.wind-prose a {
+  color: rgb(var(--wind-accent));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+.wind-prose blockquote {
+  border-left: 3px solid rgb(var(--wind-accent));
+  padding: 0.2em 0 0.2em 1em;
+  margin: 0.9em 0;
+  color: rgb(var(--wind-muted));
+  background: rgb(var(--wind-surface-2) / 0.5);
+  border-radius: 0 0.5em 0.5em 0;
+}
+.wind-prose table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 0.9em;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid rgb(var(--wind-border));
+}
+.wind-prose th,
+.wind-prose td {
+  padding: 0.6em 0.9em;
+  text-align: left;
+  border-bottom: 1px solid rgb(var(--wind-border));
+}
+.wind-prose th {
+  background: rgb(var(--wind-surface-2));
+  font-weight: 600;
+  color: rgb(var(--wind-text));
+}
+.wind-prose tr:last-child td {
+  border-bottom: none;
+}
+.wind-prose code:not(pre code) {
+  background: rgb(var(--wind-surface-2));
+  color: rgb(var(--wind-accent));
+  padding: 0.18em 0.45em;
+  border-radius: 0.4em;
+  font-size: 0.88em;
+  font-family: ui-monospace, 'Cascadia Code', 'Fira Code', Menlo, monospace;
+  font-weight: 500;
+}
+.wind-prose pre {
+  background: #0f172a;
+  color: #f8fafc;
+  border-radius: 0.95rem;
+  padding: 0;
+  overflow: hidden;
+  margin: 1em 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.3);
+}
+.dark .wind-prose pre {
+  background: #07090e;
+  border-color: rgb(var(--wind-border));
+}
+.wind-prose pre code {
+  display: block;
+  padding: 1.1em 1.25em;
+  overflow-x: auto;
+  font-size: 0.86em;
+  font-family: ui-monospace, 'Cascadia Code', 'Fira Code', Menlo, monospace;
+  line-height: 1.65;
+}
+.wind-prose hr {
+  border: none;
+  border-top: 1px solid rgb(var(--wind-border));
+  margin: 1.5em 0;
+}
