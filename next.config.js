@@ -7,7 +7,13 @@ const nextConfig = {
   },
   webpack: (config, { isServer }) => {
     if (isServer) {
-      config.externals = [...(config.externals || []), 'better-sqlite3', 'mysql2'];
+      if (Array.isArray(config.externals)) {
+        config.externals.push('better-sqlite3', 'mysql2');
+      } else if (config.externals) {
+        config.externals = [config.externals, 'better-sqlite3', 'mysql2'];
+      } else {
+        config.externals = ['better-sqlite3', 'mysql2'];
+      }
     }
     return config;
   }
